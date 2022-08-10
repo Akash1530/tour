@@ -36,10 +36,11 @@ const SingleTour = () => {
   return (
     <>
       <MDBContainer>
-        <MDBCard className="mb-3 mt-2">
+        <MDBCard className="mb-3 mt-5">
           <MDBCardImage
             position="top"
-            style={{ width: '100%', maxHeight: '600px' }}
+            className="m-auto"
+            style={{ width: '50%', maxHeight: '300px', marginTop: '20px' }}
             src={tour.imageFile}
             alt={tour.title}
           />

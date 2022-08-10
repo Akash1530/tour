@@ -1,13 +1,13 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import * as api from "../api";
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import * as api from '../api';
 
 export const createTour = createAsyncThunk(
-  "tour/createTour",
+  'tour/createTour',
   async ({ updatedTourData, navigate, toast }, { rejectWithValue }) => {
     try {
       const response = await api.createTour(updatedTourData);
-      toast.success("Tour Added Successfully");
-      navigate("/");
+      toast.success('Tour Added Successfully');
+      navigate('/');
       return response.data;
     } catch (err) {
       return rejectWithValue(err.response.data);
@@ -16,7 +16,7 @@ export const createTour = createAsyncThunk(
 );
 
 export const getTours = createAsyncThunk(
-  "tour/getTours",
+  'tour/getTours',
   async (page, { rejectWithValue }) => {
     try {
       const response = await api.getTours(page);
@@ -28,7 +28,7 @@ export const getTours = createAsyncThunk(
 );
 
 export const getTour = createAsyncThunk(
-  "tour/getTour",
+  'tour/getTour',
   async (id, { rejectWithValue }) => {
     try {
       const response = await api.getTour(id);
@@ -40,7 +40,7 @@ export const getTour = createAsyncThunk(
 );
 
 export const likeTour = createAsyncThunk(
-  "tour/likeTour",
+  'tour/likeTour',
   async ({ _id }, { rejectWithValue }) => {
     try {
       const response = await api.likeTour(_id);
@@ -52,7 +52,7 @@ export const likeTour = createAsyncThunk(
 );
 
 export const getToursByUser = createAsyncThunk(
-  "tour/getToursByUser",
+  'tour/getToursByUser',
   async (userId, { rejectWithValue }) => {
     try {
       const response = await api.getToursByUser(userId);
@@ -64,11 +64,11 @@ export const getToursByUser = createAsyncThunk(
 );
 
 export const deleteTour = createAsyncThunk(
-  "tour/deleteTour",
+  'tour/deleteTour',
   async ({ id, toast }, { rejectWithValue }) => {
     try {
       const response = await api.deleteTour(id);
-      toast.success("Tour Deleted Successfully");
+      toast.success('Tour Deleted Successfully');
       return response.data;
     } catch (err) {
       return rejectWithValue(err.response.data);
@@ -77,12 +77,12 @@ export const deleteTour = createAsyncThunk(
 );
 
 export const updateTour = createAsyncThunk(
-  "tour/updateTour",
+  'tour/updateTour',
   async ({ id, updatedTourData, toast, navigate }, { rejectWithValue }) => {
     try {
       const response = await api.updateTour(updatedTourData, id);
-      toast.success("Tour Updated Successfully");
-      navigate("/");
+      toast.success('Tour Updated Successfully');
+      navigate('/');
       return response.data;
     } catch (err) {
       return rejectWithValue(err.response.data);
@@ -91,7 +91,7 @@ export const updateTour = createAsyncThunk(
 );
 
 export const searchTours = createAsyncThunk(
-  "tour/searchTours",
+  'tour/searchTours',
   async (searchQuery, { rejectWithValue }) => {
     try {
       const response = await api.getToursBySearch(searchQuery);
@@ -103,7 +103,7 @@ export const searchTours = createAsyncThunk(
 );
 
 export const getToursByTag = createAsyncThunk(
-  "tour/getToursByTag",
+  'tour/getToursByTag',
   async (tag, { rejectWithValue }) => {
     try {
       const response = await api.getTagTours(tag);
@@ -115,7 +115,7 @@ export const getToursByTag = createAsyncThunk(
 );
 
 export const getRelatedTours = createAsyncThunk(
-  "tour/getRelatedTours",
+  'tour/getRelatedTours',
   async (tags, { rejectWithValue }) => {
     try {
       const response = await api.getRelatedTours(tags);
@@ -127,7 +127,7 @@ export const getRelatedTours = createAsyncThunk(
 );
 
 const tourSlice = createSlice({
-  name: "tour",
+  name: 'tour',
   initialState: {
     tour: {},
     tours: [],
@@ -136,7 +136,7 @@ const tourSlice = createSlice({
     relatedTours: [],
     currentPage: 1,
     numberOfPages: null,
-    error: "",
+    error: '',
     loading: false,
   },
   reducers: {
